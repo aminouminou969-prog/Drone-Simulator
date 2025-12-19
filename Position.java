@@ -15,4 +15,11 @@ public class Position{
 
 public void moveTo(Position destination,double step){
     double dist = distanceTo(destination);
+    if (dist <= 0) return;
+
+    if(step >= dist){
+        this.x = destination.x;
+        this.y = destination.y;
+        return;
+    }
 }
