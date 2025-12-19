@@ -1,7 +1,7 @@
 
 import java.util.Objects;
 
-public class StandardPackage implements Deliverable 
+public class StandardPackage implements Deliverable {
     private double weight;
     private Position destination;
 
@@ -10,3 +10,7 @@ public class StandardPackage implements Deliverable
         this.destination = destination;
     }
 
+  @Override
+    public double getWeight() {
+        return weight;
+    }
