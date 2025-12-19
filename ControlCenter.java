@@ -18,4 +18,7 @@ public class ControlCenter {
         this.base = base;
         this.map = map;
     }
+
+    public void addDrone(Drone d) { fleet.add(d); }
+    public void addOrder(Order o) 
 }
