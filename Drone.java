@@ -59,7 +59,26 @@ public abstract class Drone {
     public double getTotalDistance() { return totalDistance; }
     public List<Position> getPositionHistory() { return new ArrayList<>(positionHistory); }
     public void setStatus(String status) { this.status = status; }
+      @Override
+    public String toString() {
+        return "Drone{id=" + id +
+                ", model='" + model + '\'' +
+                ", status='" + status + '\'' +
+                ", position=" + position +
+                ", battery=" + String.format("%.2f", battery) +
+                ", speed=" + speed +
+                ", capacity=" + capacity +
+                ", totalDistance=" + String.format("%.2f", totalDistance) +
+                '}';
+    }
+       @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Drone)) return false;
+        return ((Drone) o).id == this.id;
+    }
 
+
+    
 }
 
 
