@@ -37,5 +37,10 @@ public String toString(){
                Objects.equals(p.destination, destination);
     }
     
+    @Override
+    public int hashCode() {
+        return Objects.hash(weight, destination);
+    }
+
 }
 
