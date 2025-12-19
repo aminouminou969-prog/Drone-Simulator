@@ -22,4 +22,8 @@ public void moveTo(Position destination,double step){
         this.y = destination.y;
         return;
     }
+    double ratio = step/dist;
+    this.x = this.x + (destination.x - this.x)*ratio;
+    this.y = this.y + (destination.y - this.y)*ratio;
+
 }
