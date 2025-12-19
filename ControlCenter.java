@@ -20,5 +20,10 @@ public class ControlCenter {
     }
 
     public void addDrone(Drone d) { fleet.add(d); }
+<<<<<<< HEAD
     public void addOrder(Order o)
 }
+=======
+    public void addOrder(Order o) { pendigOrders.add(o); }
+}
+>>>>>>> 20402001a91a16e1af37087fce65f1694f291cca
