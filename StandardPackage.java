@@ -25,5 +25,10 @@ public class StandardPackage implements Deliverable {
     public void setWeight(Position destenation){
         this.destination=destenation;
     }
-    
+    @Override
+public String toString(){
+    return "standardpackage{Weight="+weight+", destination=" + destination + "}";
+    }
+
+}
 
