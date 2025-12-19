@@ -21,7 +21,7 @@ public class ControlCenter {
 
     public void addDrone(Drone d) { fleet.add(d); }
     public void addOrder(Order o) { pendigOrders.add(o); }
-    public List<Drone> getFleat(){ return new ArrayList<>(fleet); }
+    public List<Drone> getFleet(){ return new ArrayList<>(fleet); }
     public List<Order> getPendingOrders(){ return new ArrayList<>(pendigOrders); }
     public List<Order> getProcessedOrders(){ return new ArrayList<>(processedOrders); }
     public java.util.Map<Drone,Order> getActiveDeliveries(){ return activeDeliveries; }
