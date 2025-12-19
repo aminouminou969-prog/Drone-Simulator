@@ -56,4 +56,12 @@ public class ControlCenter {
         return true;
     }
 
+    public double calculateDeliveryCost(Order order,Drone drone){
+        double initialPrice = order.getCost();
+        Position dest = order.getDeliverable().getDestination();
+        double oneWay = drone.getPosition().distanceTo(dest);
+        double distance = 2.0 * oneWay;
+        double consumotion = drone.calculateConsumption(distance);
+        double operationCost = (distance * 0.1) + (co)
+    }
 }
