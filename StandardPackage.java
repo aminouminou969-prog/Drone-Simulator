@@ -19,3 +19,11 @@ public class StandardPackage implements Deliverable {
     return destination;
 
  }
+  public void setWeight(double weight) {
+        this.weight = weight;
+    }
+    public void setWeight(Position destenation){
+        this.destination=destenation;
+    }
+    
+
