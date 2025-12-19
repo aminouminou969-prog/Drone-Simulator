@@ -76,10 +76,13 @@ public abstract class Drone {
         if (!(o instanceof Drone)) return false;
         return ((Drone) o).id == this.id;
     }
+      @Override
+    public int hashCode() { return Objects.hash(id); }
+}
 
 
     
-}
+
 
 
 
