@@ -75,4 +75,11 @@ public class ControlCenter {
             if("PENDING".equals(o.getStatus())) assignOrder(o);
         }
     }
+
+    public void markFailed(Drone d){
+        Order o = activeDeliveries.get(d);
+        if(o == null)return;
+        o.setStatus("FAILED");
+        processedOrders.add(o);
+    }
 }
