@@ -35,6 +35,10 @@ public class ControlCenter {
             if(!"AVAILABLE".equals(d.getStatus())) continue;
             if(d.getCapacity() < weight) continue;
             if(!map.isAllowed(dest)) continue;
+            if("ExpressDrone".equals(d.getModel()) && !"EXPRESS".equals(order.getUrgency())) continue;
+            if (!d.canFlyTo(dest)) continue;
+
+            return d;
         }
     }
 
