@@ -68,5 +68,11 @@ public class ControlCenter {
 
         return operationCost + insurance;
     }
-    
+
+    public void processOneMinute(){
+        List<Order> toTry = new ArrayList<>(pendigOrders);
+        for(Order o : toTry){
+            if("PENDING".equals(o.getStatus())) assignOrder(o);
+        }
+    }
 }
