@@ -26,6 +26,7 @@ public class DeliveryZone {
         DeliveryZone z=(DeliveryZone) o;
         return Double.compare(z.radius, radius) == 0 && Objects.equals(center, z.center);
     }
-    
 
+    @Override
+    public int hashCode(){return Objects.hash(center, radius);}
 }
