@@ -62,6 +62,11 @@ public class ControlCenter {
         double oneWay = drone.getPosition().distanceTo(dest);
         double distance = 2.0 * oneWay;
         double consumotion = drone.calculateConsumption(distance);
-        double operationCost = (distance * 0.1) + (co)
+        double operationCost = (distance * 0.1) + (consumption * 0.02) + 20.0;
+        double insurance = Math.max(initialPrice * 0.02, 10.0);
+        if ("EXPRESS".equals(order.getUrgency())) insurance += 20.0;
+
+        return operationCost + insurance;
     }
+    
 }
