@@ -27,5 +27,9 @@ public class ControlCenter {
     public java.util.Map<Drone,Order> getActiveDeliveries(){ return activeDeliveries; }
     public Position getBase(){ return base; }
     
+    public Drone findDroneForOrder(Order order){
+        double weight = order.getDeliverable().getWeight();
+        Position dest = order.getDeliverable().getDestination();
+    }
 
 }
