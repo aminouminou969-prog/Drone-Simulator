@@ -23,13 +23,14 @@ public class Main {
         Simulator sim = new Simulator(center);
         sim.simulateDay();
 
+
         System.out.println("\n===== FINAL STATISTICS =====");
         System.out.println("Number of deliveries: " + ControlCenter.numberOfDeliveries);
         System.out.println("Total distance: " + String.format("%.2f", ControlCenter.totalDistance) + " km");
-        System.out.println("Energy StandardDrone: " + String.format("%.2f", ControlCenter.energyConsumedStandard) + " %");
+        System.out.println("Energy StandardDrone: " + String.format("%.2f", ControlCenter.energryConsumedStandard) + " %");
         System.out.println("Energy ExpressDrone: " + String.format("%.2f", ControlCenter.energyConsumedExpress) + " %");
         System.out.println("Energy HeavyDrone: " + String.format("%.2f", ControlCenter.energyConsumedHeavy) + " %");
-        
+
         System.out.println("\n===== DRONES =====");
         for (Drone d : center.getFleet()) System.out.println(d);
 
@@ -38,5 +39,6 @@ public class Main {
 
         System.out.println("\n===== STILL PENDING =====");
         for (Order o : center.getPendingOrders()) System.out.println(o);
+
     }
 }
