@@ -76,10 +76,19 @@ public class ControlCenter {
         }
     }
 
+    public void markDelivered(Drone d){
+        Order o = activeDeliveries.get(d);
+        if(o == null) return;
+        o.setStatus("DELIVERED");
+        processedOrders.add(o);
+        numberOfDeliveries++;
+    }
+    
     public void markFailed(Drone d){
         Order o = activeDeliveries.get(d);
-        if(o == null)return;
+        if(o == null) return;
         o.setStatus("FAILED");
         processedOrders.add(o);
     }
+
 }
