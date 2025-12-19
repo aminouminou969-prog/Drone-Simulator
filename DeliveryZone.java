@@ -19,5 +19,13 @@ public class DeliveryZone {
     public String toString(){
         return "DeliveryZone{center=" + center + ", radius=" +radius + "}";
     }
+
+    @Override
+    public boolean equals(Object o){
+        if (!(o instanceof DeliveryZone)) return false;
+        DeliveryZone z=(DeliveryZone) o;
+        return Double.compare(z.radius, radius) == 0 && Objects.equals(center, z.center);
+    }
     
+
 }
