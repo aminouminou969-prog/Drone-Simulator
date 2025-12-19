@@ -30,6 +30,12 @@ public class ControlCenter {
     public Drone findDroneForOrder(Order order){
         double weight = order.getDeliverable().getWeight();
         Position dest = order.getDeliverable().getDestination();
+
+        for(Drone d : fleet){
+            if(!"AVAILABLE".equals(d.getStatus())) continue;
+            if(d.getCapacity() < weight) continue;
+            if(!map.isAllowed(dest)) continue;
+        }
     }
 
 }
