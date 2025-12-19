@@ -13,5 +13,9 @@ public class ControlCenter {
     public static double energryConsumedStandard = 0.0;
     public static double energyConsumedExpress = 0.0;
     public static double energyConsumedHeavy = 0.0;
-    
+
+    public ControlCenter(Position base, Map map){
+        this.base = base;
+        this.map = map;
+    }
 }
