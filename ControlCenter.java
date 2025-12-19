@@ -20,5 +20,5 @@ public class ControlCenter {
     }
 
     public void addDrone(Drone d) { fleet.add(d); }
-    public void addOrder(Order o) 
+    public void addOrder(Order o) { pendigOrders.add(o); }
 }
