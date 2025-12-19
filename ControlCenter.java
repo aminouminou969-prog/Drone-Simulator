@@ -91,4 +91,8 @@ public class ControlCenter {
         processedOrders.add(o);
     }
 
+    public void finishDelivery(Drone d){
+        activeDeliveries.remove(d);
+    }
+
 }
