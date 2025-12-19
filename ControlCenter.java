@@ -43,4 +43,8 @@ public class ControlCenter {
         return null;
     }
 
+    public boolean assignOrder(Order order){
+        Drone d = findDroneForOrder(order);
+    }
+
 }
