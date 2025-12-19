@@ -7,5 +7,11 @@ public class ControlCenter {
 
     private Position base;
     private Map map;
+
+    public static int numberOfDeliveries = 0;
+    public static double totalDistance = 0.0;
+    public static double energryConsumedStandard = 0.0;
+    public static double energyConsumedExpress = 0.0;
+    public static double energyConsumedHeavy = 0.0;
     
 }
