@@ -6,7 +6,7 @@ public class Simulator {
         this.controlCenter = controlCenter; 
     }
 
-    public void simulaterDay(){
+    public void simulateDay(){
         for(int minute = 1; minute <= 480; minute++){
             controlCenter.processOneMinute();
             moveDronesOneMinute();
