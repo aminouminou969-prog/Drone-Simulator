@@ -12,3 +12,7 @@ public class Position{
         return Math.sqrt(dx*dx+dy*dy);
     }
 }
+
+public void moveTo(Position destination,double step){
+    double dist = distanceTo(destination);
+}
