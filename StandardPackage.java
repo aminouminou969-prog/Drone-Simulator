@@ -15,7 +15,7 @@ public class StandardPackage implements Deliverable {
         return weight;
     }
  @Override
- public position getDestination(){
+ public Position getDestination(){
     return destination;
-    
+
  }
