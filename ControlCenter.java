@@ -56,4 +56,7 @@ public class ControlCenter {
         return true;
     }
 
+    public double calculateDeliveryCost(Order order,Drone drone){
+        
+    }
 }
