@@ -29,6 +29,13 @@ public class StandardPackage implements Deliverable {
 public String toString(){
     return "standardpackage{Weight="+weight+", destination=" + destination + "}";
     }
-
+@Override
+    public boolean equals(Object o) {
+        if (!(o instanceof StandardPackage)) return false;
+        StandardPackage p = (StandardPackage) o;
+        return Double.compare(p.weight, weight) == 0 &&
+               Objects.equals(p.destination, destination);
+    }
+    
 }
 
