@@ -45,6 +45,15 @@ public class ControlCenter {
 
     public boolean assignOrder(Order order){
         Drone d = findDroneForOrder(order);
+        if(d == null) return false;
+        
+        double newCost = calculateDeliveryCost(order, d);
+        order.setCost(newCost);
+        order.setStatus("IN PROGRESS");
+        d.setStatus("IN DELIVERY");
+        pendingOrders.remove(order);
+        activeDeliveries.put(d,order);
+        return true;
     }
 
 }
