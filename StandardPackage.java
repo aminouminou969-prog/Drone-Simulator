@@ -22,9 +22,9 @@ public class StandardPackage implements Deliverable {
   public void setWeight(double weight) {
         this.weight = weight;
     }
-    public void setWeight(Position destenation){
-        this.destination=destenation;
-    }
+  public void setDestination(Position destination){
+    this.destination = destination;
+  }
     @Override
 public String toString(){
     return "standardpackage{Weight="+weight+", destination=" + destination + "}";
