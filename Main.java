@@ -1,5 +1,14 @@
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
+    private static void exportReport(String content){
+        try(FileWriter fw = new FileWriter("report.txt")){
+            fw.write(content);
+        } catch(IOException e){
+            System.out.println("Could not write report.txt: " + e.getMessage());
+        }
+    }
     public static void main(String[] args) {
         Map map = new Map();
         map.addNoFlyZone(new NoFlyZone(new Position(3, 3), 2.5));
@@ -27,28 +36,31 @@ public class Main {
         sim.simulateDay();
 
 
-        System.out.println("\n===== FINAL STATISTICS =====");
-        System.out.println("Number of deliveries: " + ControlCenter.numberOfDeliveries);
-        System.out.println("Total distance: " + String.format("%.2f", ControlCenter.totalDistance) + " km");
-        System.out.println("Energy StandardDrone: " + String.format("%.2f", ControlCenter.energryConsumedStandard) + " %");
-        System.out.println("Energy ExpressDrone: " + String.format("%.2f", ControlCenter.energyConsumedExpress) + " %");
-        System.out.println("Energy HeavyDrone: " + String.format("%.2f", ControlCenter.energyConsumedHeavy) + " %");
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\n===== FINAL STATISTICS =====\n");
+        sb.append("Number of deliveries: ").append(ControlCenter.numberOfDeliveries).append("\n");
+        sb.append("Total distance: ").append(String.format("%.2f", ControlCenter.totalDistance)).append("km\n");
+        sb.append("Energy StandardDrone: ").append(String.format("%.2f", ControlCenter.energryConsumedStandard)).append(" %\n");
+        sb.append("Energy ExpressDrone: ").append(String.format("%.2f", ControlCenter.energyConsumedExpress)).append(" %\n");
+        sb.append("Energy HeavyDrone: ").append(String.format(("%.2f"), ControlCenter.energyConsumedHeavy)).append(" %\n");
 
         Drone best = center.getMostActiveDroneByDistance();
         if(best != null){
-            System.out.println("Most active drone: ID=" + best.getId() +
-            " model=" + best.getModel() +
-            " distance=" + String.format("%.2f",best.getTotalDistance()) + "km");
+            sb.append("Most active drone: ID=").append(best.getId())
+                .append(" model=").append(best.getModel())
+                .append(" distance=").append(String.format("%.2f", best.getTotalDistance()))
+                .append("km\n");
         }
 
-        System.out.println("\n===== DRONES =====");
-        for (Drone d : center.getFleet()) System.out.println(d);
-
-        System.out.println("\n===== PROCESSED ORDERS =====");
-        for (Order o : center.getProcessedOrders()) System.out.println(o);
-
-        System.out.println("\n===== STILL PENDING =====");
-        for (Order o : center.getPendingOrders()) System.out.println(o);
-
+        sb.append("\n===== DRONES =====\n");
+        for(Drone d: center.getFleet()) sb.append(d).append("\n");
+        sb.append("\n===== PROCESSED ORDERS =====\n");
+        for(Order o: center.getProcessedOrders()) sb.append(o).append("\n");
+        sb.append("\n===== STILL PENDING =====\n");
+        for(Order o: center.getPendingOrders()) sb.append(o).append("\n");
+        
+        System.out.print(sb.toString());
+        exportReport(sb.toString());
     }
 }
