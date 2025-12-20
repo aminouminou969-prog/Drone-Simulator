@@ -29,6 +29,15 @@ public class ControlCenter {
     public java.util.Map<Drone,Order> getActiveDeliveries(){ return activeDeliveries; }
     public Position getBase(){ return base; }
     
+    public void sortPendingOrdersByUrgency(){
+        pendingOrders.sort((o1,o2) -> {
+            boolean e1 ="EXPRESS".equals(o1.getUrgency());
+            boolean e2 ="EXPRESS".equals(o2.getUrgency());
+            if(e1 == e2) return 0;
+            return e1 ? -1: 1;
+        });
+    }
+
     public Drone findDroneForOrder(Order order){
         double weight = order.getDeliverable().getWeight();
         Position dest = order.getDeliverable().getDestination();
@@ -72,6 +81,7 @@ public class ControlCenter {
     }
 
     public void processOneMinute(){
+        sortPendingOrdersByUrgency();
         List<Order> toTry = new ArrayList<>(pendingOrders);
         for(Order o : toTry){
             if("PENDING".equals(o.getStatus())) assignOrder(o);
