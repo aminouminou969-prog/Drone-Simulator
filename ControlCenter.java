@@ -99,7 +99,7 @@ public class ControlCenter {
 
     public static void addEnergyConsumed(Drone d, double consumedPercent){
         if("StandardDrone".equals(d.getModel())) energryConsumedStandard += consumedPercent;
-        else if("ExepressDrone".equals(d.getModel())) energyConsumedExpress += consumedPercent;
+        else if("ExpressDrone".equals(d.getModel())) energyConsumedExpress += consumedPercent;
         else if("HeavyDrone".equals(d.getModel())) energyConsumedHeavy += consumedPercent;
     }
 }
