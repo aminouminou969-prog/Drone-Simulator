@@ -102,4 +102,15 @@ public class ControlCenter {
         else if("ExpressDrone".equals(d.getModel())) energyConsumedExpress += consumedPercent;
         else if("HeavyDrone".equals(d.getModel())) energyConsumedHeavy += consumedPercent;
     }
+
+    public Drone getMostActiveDroneByDistance(){
+        if(fleet.isEmpty()) return null;
+        Drone best = fleet.get(0);
+        for(Drone d: fleet){
+            if(d.getTotalDistance() > best.getTotalDistance()){
+                best = d;
+            }
+        }
+        return best;
+    }
 }

@@ -34,6 +34,13 @@ public class Main {
         System.out.println("Energy ExpressDrone: " + String.format("%.2f", ControlCenter.energyConsumedExpress) + " %");
         System.out.println("Energy HeavyDrone: " + String.format("%.2f", ControlCenter.energyConsumedHeavy) + " %");
 
+        Drone best = center.getMostActiveDroneByDistance();
+        if(best != null){
+            System.out.println("Most active drone: ID=" + best.getId() +
+            " model=" + best.getModel() +
+            " distance=" + String.format("%.2f",best.getTotalDistance()) + "km");
+        }
+
         System.out.println("\n===== DRONES =====");
         for (Drone d : center.getFleet()) System.out.println(d);
 
