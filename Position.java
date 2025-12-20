@@ -49,4 +49,9 @@ public class Position{
 
     }
 
+    @Override
+    public String toString(){
+        return"(" + String.format("%.2f",x) + ", " + String.format("%.2f",y) + ")";
+    }
+
 }
