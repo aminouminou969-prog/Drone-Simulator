@@ -55,5 +55,12 @@ public class Simulator {
 
             
         }
+        for(Drone d: controlCenter.getFleet()){
+            if("AVAILABLE".equals(d.getStatus()) && controlCenter.getBase().equals(d.getPosition())){
+                if(d.getBattery() < 100){
+                    d.recharge(1.0); // 1% par minute
+                }
+            }
+        }
     }
 }
