@@ -39,19 +39,47 @@ public class ControlCenter {
     }
 
     public Drone findDroneForOrder(Order order){
-        double weight = order.getDeliverable().getWeight();
         Position dest = order.getDeliverable().getDestination();
+        double weight = order.getDeliverable().getWeight();
+        
+        if(!map.isAllowed(dest)) return null;
 
-        for(Drone d : fleet){
-            if(!"AVAILABLE".equals(d.getStatus())) continue;
-            if(d.getCapacity() < weight) continue;
-            if(!map.isAllowed(dest)) continue;
-            if("ExpressDrone".equals(d.getModel()) && !"EXPRESS".equals(order.getUrgency())) continue;
-            if (!d.canFlyTo(dest)) continue;
-
-            return d;
+        boolean isExpress = "EXPRESS".equals(order.getUrgency());
+        
+        //1) EXPRESS: try ExpressDrone ONLY (mandatory)
+        if(isExpress){
+            for(Drone d: fleet){
+                if(!"AVAILABLE".equals(d.getStatus())) continue;
+                if(!"ExpressDrone".equals(d.getModel())) continue;
+                if(d.getCapacity() < weight) continue;
+                if(!d.canFlyTo(dest)) continue;
+                return d;
+            }
         }
-        return null;
+
+        //2) Shortest Estimated Time (Standard / Heavy only)
+        Drone best = null;
+        double bestTime = Double.MAX_VALUE;
+
+        for(Drone d: fleet){
+            if(!"AVAILABLE".equals(d.getStatus())) continue;
+            if("ExpressDrone".equals(d.getModel())) continue;
+            if(d.getCapacity() < weight) continue;
+            if(!d.canFlyTo(dest)) continue;
+
+            double oneWay = d.getPosition().distanceTo(dest);
+            double roundTrip = oneWay * 2.0;
+            double estimatedTime = roundTrip/d.getSpeed();
+            if(estimatedTime < bestTime){
+                bestTime = estimatedTime;
+                best = d;
+            }
+        }
+
+        //3) If still no drone → order stays PENDING
+
+        return best;
+        
     }
 
     public boolean assignOrder(Order order){

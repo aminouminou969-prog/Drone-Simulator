@@ -1,0 +1,23 @@
+
+===== FINAL STATISTICS =====
+Number of deliveries: 4
+Total distance: 83,73km
+Energy StandardDrone: 145,49 %
+Energy ExpressDrone: 0,00 %
+Energy HeavyDrone: 176,16 %
+Most active drone: ID=1 model=StandardDrone distance=48,50km
+
+===== DRONES =====
+Drone{id=1, model='StandardDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=30.0, capacity=1.0, totalDistance=48,50}
+Drone{id=2, model='ExpressDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=45.0, capacity=1.0, totalDistance=0,00}
+Drone{id=3, model='HeavyDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=20.0, capacity=3.0, totalDistance=35,23}
+
+===== PROCESSED ORDERS =====
+Order{id=2, client='ClientB', deliverable=standardpackage{Weight=0.7, destination=(12,00, 2,00)}, cost=83,89, urgency='EXPRESS', status='DELIVERED'}
+Order{id=1, client='ClientA', deliverable=standardpackage{Weight=0.8, destination=(10,00, 0,00)}, cost=48,00, urgency='NORMAL', status='DELIVERED'}
+Order{id=4, client='ClientD', deliverable=standardpackage{Weight=0.6, destination=(11,00, 5,00)}, cost=47,87, urgency='NORMAL', status='DELIVERED'}
+Order{id=6, client='ClientG', deliverable=standardpackage{Weight=1.1, destination=(7,00, 3,00)}, cost=53,05, urgency='NORMAL', status='DELIVERED'}
+
+===== STILL PENDING =====
+Order{id=5, client='ClientF', deliverable=standardpackage{Weight=1.7, destination=(15,00, 0,00)}, cost=2000,00, urgency='EXPRESS', status='PENDING'}
+Order{id=3, client='ClientC', deliverable=standardpackage{Weight=2.2, destination=(8,00, 8,00)}, cost=1500,00, urgency='NORMAL', status='PENDING'}
