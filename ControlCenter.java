@@ -151,4 +151,30 @@ public class ControlCenter {
         }
         return best;
     }
+    public String getPendingReason(Order o){
+        Position dest = o.getDeliverable().getDestination();
+        double weight = o.getDeliverable().getWeight();
+
+        if(map.isForbidden(dest)){
+            return "Destination in NoFlyZone";
+        }
+
+        if(weight > 1.0){
+            Drone heavy = null;
+            for(Drone d: fleet){
+                if("HeavyDrone".equals(d.getModel())){
+                    heavy = d;
+                    break;
+                }
+            }
+            if(heavy != null){
+                if(!heavy.canFlyTo(dest)){
+                    return "HeavyDrone battery insufficient for round trip";
+                }
+            }
+            return "Too heavy for Standard/Express";
+        }
+        
+        return "No suitable available drone";
+    }
 }

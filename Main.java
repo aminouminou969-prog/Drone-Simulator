@@ -59,7 +59,10 @@ public class Main {
         sb.append("\n===== PROCESSED ORDERS =====\n");
         for(Order o: center.getProcessedOrders()) sb.append(o).append("\n");
         sb.append("\n===== STILL PENDING =====\n");
-        for(Order o: center.getPendingOrders()) sb.append(o).append("\n");
+        for(Order o: center.getPendingOrders()){
+            sb.append(o).append("\n");
+            sb.append("Reason: ").append(center.getPendingReason(o)).append("\n");
+        }
         
         System.out.print(sb.toString());
         exportReport(sb.toString());
