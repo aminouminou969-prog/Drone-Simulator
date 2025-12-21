@@ -6,15 +6,30 @@ public class Simulator {
         this.controlCenter = controlCenter; 
     }
 
+    private static final boolean DEBUG = true;
+
     public void simulateDay(){
         for(int minute = 1; minute <= 480; minute++){
+            if(DEBUG && minute <= 10){
+                System.out.println("----- minute " + minute + " -----");
+            }
             controlCenter.processOneMinute();
-            moveDronesOneMinute();
+            moveDronesOneMinute(minute);
         }
     }
     
-    private void moveDronesOneMinute(){
+    private void moveDronesOneMinute(int minute){
         java.util.Map<Drone, Order> active = new HashMap<>(controlCenter.getActiveDeliveries());
+
+        if(DEBUG && minute <= 10){
+            System.out.println("BEFORE move");
+            for(Drone d: controlCenter.getFleet()){
+                System.out.println("Drone " + d.getId() + " " + d.getModel()
+                    + " status=" + d.getStatus()
+                    + " pos=" + d.getPosition()
+                    + " battery=" + String.format("%.2f", d.getBattery()));
+            }
+        }
 
         for(java.util.Map.Entry<Drone,Order> e : active.entrySet()){
             Drone d = e.getKey();
@@ -60,6 +75,15 @@ public class Simulator {
                 if(d.getBattery() < 100){
                     d.recharge(1.0); // 1% par minute
                 }
+            }
+        }
+        if(DEBUG && minute <= 10){
+            System.out.println("AFTER move");
+            for(Drone d: controlCenter.getFleet()){
+                System.out.println("Drone " + d.getId() + " " + d.getModel()
+                    + " status=" + d.getStatus()
+                    + " pos=" + d.getPosition()
+                    + " battery=" + String.format("%.2f", d.getBattery()));
             }
         }
     }
