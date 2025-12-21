@@ -13,11 +13,12 @@ Drone{id=2, model='ExpressDrone', status='AVAILABLE', position=(0,00, 0,00), bat
 Drone{id=3, model='HeavyDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=20.0, capacity=3.0, totalDistance=15,23}
 
 ===== PROCESSED ORDERS =====
-Order{id=2, client='ClientB', deliverable=standardpackage{Weight=0.7, destination=(12,00, 2,00)}, cost=84,38, urgency='EXPRESS', status='DELIVERED'}
-Order{id=1, client='ClientA', deliverable=standardpackage{Weight=0.8, destination=(10,00, 0,00)}, cost=47,20, urgency='NORMAL', status='DELIVERED'}
-Order{id=6, client='ClientG', deliverable=standardpackage{Weight=1.1, destination=(7,00, 3,00)}, cost=53,05, urgency='NORMAL', status='DELIVERED'}
-Order{id=4, client='ClientD', deliverable=standardpackage{Weight=0.6, destination=(11,00, 5,00)}, cost=47,87, urgency='NORMAL', status='DELIVERED'}
+Order{id=2, client='Client B', deliverable=standardpackage{Weight=0.7, destination=(12,00, 2,00)}, cost=84,38, urgency='EXPRESS', status='DELIVERED'}
+Order{id=1, client='Client A', deliverable=standardpackage{Weight=0.8, destination=(10,00, 0,00)}, cost=47,20, urgency='NORMAL', status='DELIVERED'}
+Order{id=6, client='Client G', deliverable=standardpackage{Weight=1.1, destination=(7,00, 3,00)}, cost=53,05, urgency='NORMAL', status='DELIVERED'}
+Order{id=4, client='Client D', deliverable=standardpackage{Weight=0.6, destination=(11,00, 5,00)}, cost=47,87, urgency='NORMAL', status='DELIVERED'}
 
 ===== STILL PENDING =====
-Order{id=5, client='ClientF', deliverable=standardpackage{Weight=1.7, destination=(15,00, 0,00)}, cost=2000,00, urgency='EXPRESS', status='PENDING'}
-Order{id=3, client='ClientC', deliverable=standardpackage{Weight=2.2, destination=(8,00, 8,00)}, cost=1500,00, urgency='NORMAL', status='PENDING'}
+Order{id=5, client='Client F', deliverable=standardpackage{Weight=1.7, destination=(15,00, 0,00)}, cost=2000,00, urgency='EXPRESS', status='PENDING'}
+Order{id=3, client='Client C', deliverable=standardpackage{Weight=2.2, destination=(8,00, 8,00)}, cost=1500,00, urgency='NORMAL', status='PENDING'}
+Order{id=7, client='client G', deliverable=standardpackage{Weight=0.5, destination=(3,00, 3,00)}, cost=500,00, urgency='NORMAL', status='PENDING'}
