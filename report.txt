@@ -20,5 +20,8 @@ Order{id=4, client='Client D', deliverable=standardpackage{Weight=0.6, destinati
 
 ===== STILL PENDING =====
 Order{id=5, client='Client F', deliverable=standardpackage{Weight=1.7, destination=(15,00, 0,00)}, cost=2000,00, urgency='EXPRESS', status='PENDING'}
+Reason: HeavyDrone battery insufficient for round trip
 Order{id=3, client='Client C', deliverable=standardpackage{Weight=2.2, destination=(8,00, 8,00)}, cost=1500,00, urgency='NORMAL', status='PENDING'}
+Reason: HeavyDrone battery insufficient for round trip
 Order{id=7, client='client G', deliverable=standardpackage{Weight=0.5, destination=(3,00, 3,00)}, cost=500,00, urgency='NORMAL', status='PENDING'}
+Reason: Destination in NoFlyZone

@@ -6,7 +6,7 @@ public class Simulator {
         this.controlCenter = controlCenter; 
     }
 
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     public void simulateDay(){
         for(int minute = 1; minute <= 480; minute++){
