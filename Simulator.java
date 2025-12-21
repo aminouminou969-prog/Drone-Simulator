@@ -63,6 +63,7 @@ public class Simulator {
 
                 if (base.equals(d.getPosition())){
                     d.setStatus("AVAILABLE");
+                    controlCenter.logReturned(d);
                     controlCenter.finishDelivery(d);
                 }
             }

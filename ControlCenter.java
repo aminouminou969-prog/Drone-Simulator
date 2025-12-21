@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException;
 public class ControlCenter {
     private List<Drone> fleet=new ArrayList<>();
     private List<Order> pendingOrders;
@@ -7,6 +9,28 @@ public class ControlCenter {
 
     private Position base;
     private Map map;
+
+    private final String eventsFile = "events.txt";
+
+    public void clearEvents(){
+        try(FileWriter fw = new FileWriter(eventsFile, false)){
+            fw.write("");
+        } catch(IOException e){
+            System.out.println("Could not reset events.txt: " + e.getMessage());
+        }
+    }
+
+    private void logEvent(String msg){
+        try(FileWriter fw = new FileWriter(eventsFile, true)){
+            fw.write(msg + "\n");
+        } catch(IOException e){
+            System.out.println("Could not write events.txt: " + e.getMessage());
+        }
+    }
+
+    public void logReturned(Drone d){
+        logEvent("RETURNED: Drone#" + d.getId() + " (" + d.getModel() + ")");
+    }
 
     public static int numberOfDeliveries = 0;
     public static double totalDistance = 0.0;
@@ -92,6 +116,7 @@ public class ControlCenter {
         d.setStatus("IN DELIVERY");
         pendingOrders.remove(order);
         activeDeliveries.put(d,order);
+        logEvent("ASSIGN: Order#" + order.getId() + " -> Drone#" + d.getId() + " (" + d.getModel() + ")");
         return true;
     }
 
@@ -122,6 +147,7 @@ public class ControlCenter {
         o.setStatus("DELIVERED");
         d.incrementDeliveriesDone();
         processedOrders.add(o);
+        logEvent("DELIVERED: Order#" + o.getId() + " by Drone#" + d.getId() + " (" + d.getModel() + ")");
         numberOfDeliveries++;
     }
     
@@ -130,6 +156,8 @@ public class ControlCenter {
         if(o == null) return;
         o.setStatus("FAILED");
         processedOrders.add(o);
+        logEvent("FAILED: Order#" + o.getId() + " by Drone#" + d.getId() + " (" + d.getModel() + ")");
+
     }
 
     public void finishDelivery(Drone d){
