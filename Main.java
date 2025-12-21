@@ -31,7 +31,7 @@ public class Main {
         center.addOrder(new Order("Client D", new StandardPackage(0.6, new Position(11, 5)), "NORMAL", 1200));
         center.addOrder(new Order("Client F", new StandardPackage(1.7, new Position(15, 0)), "EXPRESS", 2000));
         center.addOrder(new Order("Client G", new StandardPackage(1.1, new Position(7, 3)), "NORMAL", 1500));
-        center.addOrder(new Order("client G", new StandardPackage(0.5, new Position(3, 3)), "NORMAL", 500));
+        center.addOrder(new Order("client NFZ", new StandardPackage(0.5, new Position(3, 3)), "NORMAL", 500));
 
         Simulator sim = new Simulator(center);
         sim.simulateDay();
