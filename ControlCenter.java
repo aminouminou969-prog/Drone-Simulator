@@ -160,6 +160,26 @@ public class ControlCenter {
             return "Destination in NoFlyZone";
         }
 
+        boolean anyAvailable = false;
+        for(Drone d: fleet){
+            if("AVAILABLE".equals(d.getStatus())){
+                anyAvailable = true;
+                break;
+            }
+        }
+
+        if(!anyAvailable){
+            return "All drones are busy";
+        }
+
+        double maxCap = 0.0;
+        for(Drone d: fleet){
+            if(d.getCapacity() > maxCap) maxCap = d.getCapacity();
+        }
+        if(weight > maxCap){
+            return "No drone can carry this weight";
+        }
+
         if(weight > 1.0){
             Drone heavy = null;
             for(Drone d: fleet){
@@ -168,12 +188,29 @@ public class ControlCenter {
                     break;
                 }
             }
-            if(heavy != null){
-                if(!heavy.canFlyTo(dest)){
-                    return "HeavyDrone battery insufficient for round trip";
-                }
+            if(heavy != null && !heavy.canFlyTo(dest)){
+                return "HeavyDrone battery insufficient for round trip";
             }
             return "Too heavy for Standard/Express";
+        }
+        
+        boolean canCarryExists = false;
+        boolean canFlyExists = false;
+
+        for(Drone d: fleet){
+            if(!"AVAILABLE".equals(d.getStatus())) continue;
+            if(!"EXPRESS".equals(o.getUrgency()) && "ExpressDrone".equals(d.getModel())) continue;
+            if(d.getCapacity() >= weight){
+                canCarryExists = true;
+                if(d.canFlyTo(dest)){
+                    canFlyExists = true;
+                    break;
+                }
+            }
+        }
+
+        if(canCarryExists && !canFlyExists){
+            return "Not enough battery for round trip";
         }
         
         return "No suitable available drone";

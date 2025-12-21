@@ -9,8 +9,14 @@ Most active drone: ID=1 model=StandardDrone distance=44,17km
 
 ===== DRONES =====
 Drone{id=1, model='StandardDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=30.0, capacity=1.0, totalDistance=44,17}
+Deliveries done: 2
+Avg distance/delivery: 22,08 km
 Drone{id=2, model='ExpressDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=45.0, capacity=1.0, totalDistance=24,33}
+Deliveries done: 1
+Avg distance/delivery: 24,33 km
 Drone{id=3, model='HeavyDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=20.0, capacity=3.0, totalDistance=15,23}
+Deliveries done: 1
+Avg distance/delivery: 15,23 km
 
 ===== PROCESSED ORDERS =====
 Order{id=2, client='Client B', deliverable=standardpackage{Weight=0.7, destination=(12,00, 2,00)}, cost=84,38, urgency='EXPRESS', status='DELIVERED'}
