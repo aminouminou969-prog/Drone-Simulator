@@ -120,6 +120,7 @@ public class ControlCenter {
         Order o = activeDeliveries.get(d);
         if(o == null) return;
         o.setStatus("DELIVERED");
+        d.incrementDeliveriesDone();
         processedOrders.add(o);
         numberOfDeliveries++;
     }

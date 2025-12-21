@@ -14,6 +14,7 @@ public abstract class Drone {
     private double capacity; // kg
     private String status;  // AVAILABLE, IN DELIVERY, RETURN TO BASE
       private double totalDistance;
+      private int deliveriesDone = 0;
     private List<Position> positionHistory;
      public Drone(Position position, double battery, String model, double speed, double capacity) {
         this.id = NEXT_ID++;
@@ -58,6 +59,12 @@ public abstract class Drone {
     public String getStatus() { return status; }
     public double getTotalDistance() { return totalDistance; }
     public List<Position> getPositionHistory() { return new ArrayList<>(positionHistory); }
+    public int getDeliveriesDone() { return deliveriesDone; }
+    public void incrementDeliveriesDone() { deliveriesDone++; }
+    public double getAvgDistancePerDelivery() {
+      if (deliveriesDone == 0) return 0.0;
+      return totalDistance/deliveriesDone;
+    }
     public void setStatus(String status) { this.status = status; }
       @Override
     public String toString() {

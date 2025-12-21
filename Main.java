@@ -55,7 +55,13 @@ public class Main {
         }
 
         sb.append("\n===== DRONES =====\n");
-        for(Drone d: center.getFleet()) sb.append(d).append("\n");
+        for(Drone d: center.getFleet()){
+            sb.append(d).append("\n");
+            sb.append("Deliveries done: ").append(d.getDeliveriesDone()).append("\n");
+            sb.append("Avg distance/delivery: ")
+                .append(String.format("%.2f", d.getAvgDistancePerDelivery()))
+                .append(" km\n");
+        }
         sb.append("\n===== PROCESSED ORDERS =====\n");
         for(Order o: center.getProcessedOrders()) sb.append(o).append("\n");
         sb.append("\n===== STILL PENDING =====\n");
