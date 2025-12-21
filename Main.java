@@ -25,12 +25,13 @@ public class Main {
         center.addDrone(d3);
 
         // client, package(weight,destination), urgency, initial product cost
-        center.addOrder(new Order("ClientA", new StandardPackage(0.8, new Position(10, 0)), "NORMAL", 1200));
-        center.addOrder(new Order("ClientB", new StandardPackage(0.7, new Position(12, 2)), "EXPRESS", 2000));
-        center.addOrder(new Order("ClientC", new StandardPackage(2.2, new Position(8, 8)), "NORMAL", 1500));
-        center.addOrder(new Order("ClientD", new StandardPackage(0.6, new Position(11, 5)), "NORMAL", 1200));
-        center.addOrder(new Order("ClientF", new StandardPackage(1.7, new Position(15, 0)), "EXPRESS", 2000));
-        center.addOrder(new Order("ClientG", new StandardPackage(1.1, new Position(7, 3)), "NORMAL", 1500));
+        center.addOrder(new Order("Client A", new StandardPackage(0.8, new Position(10, 0)), "NORMAL", 1200));
+        center.addOrder(new Order("Client B", new StandardPackage(0.7, new Position(12, 2)), "EXPRESS", 2000));
+        center.addOrder(new Order("Client C", new StandardPackage(2.2, new Position(8, 8)), "NORMAL", 1500));
+        center.addOrder(new Order("Client D", new StandardPackage(0.6, new Position(11, 5)), "NORMAL", 1200));
+        center.addOrder(new Order("Client F", new StandardPackage(1.7, new Position(15, 0)), "EXPRESS", 2000));
+        center.addOrder(new Order("Client G", new StandardPackage(1.1, new Position(7, 3)), "NORMAL", 1500));
+        center.addOrder(new Order("client G", new StandardPackage(0.5, new Position(3, 3)), "NORMAL", 500));
 
         Simulator sim = new Simulator(center);
         sim.simulateDay();
