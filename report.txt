@@ -1,33 +1,40 @@
 
-===== FINAL STATISTICS =====
-Number of deliveries: 4
-Total distance: 83,73km
-Energy StandardDrone: 132,50 %
-Energy ExpressDrone: 97,32 %
-Energy HeavyDrone: 76,16 %
-Most active drone: ID=1 model=StandardDrone distance=44,17km
+============================================================
+                DRONE DELIVERY - FINAL REPORT               
+============================================================
 
-===== DRONES =====
-Drone{id=1, model='StandardDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=30.0, capacity=1.0, totalDistance=44,17}
-Deliveries done: 2
-Avg distance/delivery: 22,08 km
-Drone{id=2, model='ExpressDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=45.0, capacity=1.0, totalDistance=24,33}
-Deliveries done: 1
-Avg distance/delivery: 24,33 km
-Drone{id=3, model='HeavyDrone', status='AVAILABLE', position=(0,00, 0,00), battery=100,00, speed=20.0, capacity=3.0, totalDistance=15,23}
-Deliveries done: 1
-Avg distance/delivery: 15,23 km
+Deliveries completed : 4
+Total distance       : 83,73 km
+Energy StandardDrone : 132,50 % 
+Energy ExpressDrone  : 97,32 % 
+Energy HeavyDrone    : 76,16 % 
+Most active drone    : ID=1 StandardDrone (44,17 km)
+------------------------------------------------------------
 
-===== PROCESSED ORDERS =====
-Order{id=2, client='Client B', deliverable=standardpackage{Weight=0.7, destination=(12,00, 2,00)}, cost=84,38, urgency='EXPRESS', status='DELIVERED'}
-Order{id=1, client='Client A', deliverable=standardpackage{Weight=0.8, destination=(10,00, 0,00)}, cost=47,20, urgency='NORMAL', status='DELIVERED'}
-Order{id=6, client='Client G', deliverable=standardpackage{Weight=1.1, destination=(7,00, 3,00)}, cost=53,05, urgency='NORMAL', status='DELIVERED'}
-Order{id=4, client='Client D', deliverable=standardpackage{Weight=0.6, destination=(11,00, 5,00)}, cost=47,87, urgency='NORMAL', status='DELIVERED'}
+DRONES
+------------------------------------------------------------
+ID  MODEL        STATUS       POSITION         BAT%    DIST(km)   DONE   AVG(km)   
+------------------------------------------------------------
+1   StandardDrone AVAILABLE    (0,00, 0,00)     100     44,17      2      22,08     
+2   ExpressDrone AVAILABLE    (0,00, 0,00)     100     24,33      1      24,33     
+3   HeavyDrone   AVAILABLE    (0,00, 0,00)     100     15,23      1      15,23     
+------------------------------------------------------------
 
-===== STILL PENDING =====
-Order{id=5, client='Client F', deliverable=standardpackage{Weight=1.7, destination=(15,00, 0,00)}, cost=2000,00, urgency='EXPRESS', status='PENDING'}
-Reason: HeavyDrone battery insufficient for round trip
-Order{id=3, client='Client C', deliverable=standardpackage{Weight=2.2, destination=(8,00, 8,00)}, cost=1500,00, urgency='NORMAL', status='PENDING'}
-Reason: HeavyDrone battery insufficient for round trip
-Order{id=7, client='client NFZ', deliverable=standardpackage{Weight=0.5, destination=(3,00, 3,00)}, cost=500,00, urgency='NORMAL', status='PENDING'}
-Reason: Destination in NoFlyZone
+PROCESSED ORDERS
+------------------------------------------------------------
+ID   CLIENT       URG        WEIGHT   COST       STATUS    
+------------------------------------------------------------
+2    Client B     EXPRESS    0,70     84,38      DELIVERED 
+1    Client A     NORMAL     0,80     47,20      DELIVERED 
+6    Client G     NORMAL     1,10     53,05      DELIVERED 
+4    Client D     NORMAL     0,60     47,87      DELIVERED 
+------------------------------------------------------------
+
+PENDING ORDERS
+------------------------------------------------------------
+ID   CLIENT       URG        WEIGHT   STATUS     REASON                             
+------------------------------------------------------------
+5    Client F     EXPRESS    1,70     PENDING    HeavyDrone battery insufficient for round trip
+3    Client C     NORMAL     2,20     PENDING    HeavyDrone battery insufficient for round trip
+7    client NFZ   NORMAL     0,50     PENDING    Destination in NoFlyZone           
+------------------------------------------------------------

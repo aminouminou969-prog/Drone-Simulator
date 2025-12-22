@@ -61,8 +61,23 @@ public class ControlCenter {
             return e1 ? -1: 1;
         });
     }
-
+    
+    //checks only
     public Drone findDroneForOrder(Order order){
+        Position dest = order.getDeliverable().getDestination();
+        double weight = order.getDeliverable().getWeight();
+        if(!map.isAllowed(dest)) return null;
+        for(Drone d: fleet){
+            if(!"AVAILABLE".equals(d.getStatus())) continue;
+            if(d.getCapacity() < weight) continue;
+            if(!d.canFlyTo(dest)) continue;
+            return d;
+        }
+        return null;
+    }
+    
+    //batter selection 
+    public Drone selectDroneForOrder(Order order){
         Position dest = order.getDeliverable().getDestination();
         double weight = order.getDeliverable().getWeight();
         
@@ -70,7 +85,7 @@ public class ControlCenter {
 
         boolean isExpress = "EXPRESS".equals(order.getUrgency());
         
-        //1) EXPRESS: try ExpressDrone ONLY (mandatory)
+        //1) EXPRESS: try ExpressDrone ONLY 
         if(isExpress){
             for(Drone d: fleet){
                 if(!"AVAILABLE".equals(d.getStatus())) continue;
