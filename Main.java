@@ -40,36 +40,83 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("\n===== FINAL STATISTICS =====\n");
-        sb.append("Number of deliveries: ").append(ControlCenter.numberOfDeliveries).append("\n");
-        sb.append("Total distance: ").append(String.format("%.2f", ControlCenter.totalDistance)).append("km\n");
-        sb.append("Energy StandardDrone: ").append(String.format("%.2f", ControlCenter.energryConsumedStandard)).append(" %\n");
-        sb.append("Energy ExpressDrone: ").append(String.format("%.2f", ControlCenter.energyConsumedExpress)).append(" %\n");
-        sb.append("Energy HeavyDrone: ").append(String.format(("%.2f"), ControlCenter.energyConsumedHeavy)).append(" %\n");
+        sb.append("\n============================================================\n");
+        sb.append("                DRONE DELIVERY - FINAL REPORT               \n");
+        sb.append("============================================================\n\n");
+
+        sb.append(String.format("Deliveries completed : %d%n", ControlCenter.numberOfDeliveries));
+        sb.append(String.format("Total distance       : %.2f km%n", ControlCenter.totalDistance));
+        sb.append(String.format("Energy StandardDrone : %.2f %% %n", ControlCenter.energryConsumedStandard));
+        sb.append(String.format("Energy ExpressDrone  : %.2f %% %n", ControlCenter.energyConsumedExpress));
+        sb.append(String.format("Energy HeavyDrone    : %.2f %% %n", ControlCenter.energyConsumedHeavy));
 
         Drone best = center.getMostActiveDroneByDistance();
         if(best != null){
-            sb.append("Most active drone: ID=").append(best.getId())
-                .append(" model=").append(best.getModel())
-                .append(" distance=").append(String.format("%.2f", best.getTotalDistance()))
-                .append("km\n");
+            sb.append(String.format("Most active drone    : ID=%d %s (%.2f km)%n",
+                best.getId(), best.getModel(), best.getTotalDistance()));
         }
 
-        sb.append("\n===== DRONES =====\n");
+        sb.append("------------------------------------------------------------\n\n");
+
+    
+        sb.append("DRONES\n");
+        sb.append("------------------------------------------------------------\n");
+        sb.append(String.format("%-3s %-12s %-12s %-16s %-7s %-10s %-6s %-10s%n",
+        "ID", "MODEL", "STATUS", "POSITION", "BAT%", "DIST(km)", "DONE", "AVG(km)"));
+        sb.append("------------------------------------------------------------\n");
+
         for(Drone d: center.getFleet()){
-            sb.append(d).append("\n");
-            sb.append("Deliveries done: ").append(d.getDeliveriesDone()).append("\n");
-            sb.append("Avg distance/delivery: ")
-                .append(String.format("%.2f", d.getAvgDistancePerDelivery()))
-                .append(" km\n");
+            sb.append(String.format("%-3d %-12s %-12s %-16s %-7.0f %-10.2f %-6d %-10.2f%n",
+                d.getId(),
+                d.getModel(),
+                d.getStatus(),
+                d.getPosition().toString(),
+                d.getBattery(),
+                d.getTotalDistance(),
+                d.getDeliveriesDone(),
+                d.getAvgDistancePerDelivery()
+            ));
         }
-        sb.append("\n===== PROCESSED ORDERS =====\n");
-        for(Order o: center.getProcessedOrders()) sb.append(o).append("\n");
-        sb.append("\n===== STILL PENDING =====\n");
+        sb.append("------------------------------------------------------------\n\n");
+
+
+        sb.append("PROCESSED ORDERS\n");
+        sb.append("------------------------------------------------------------\n");
+        sb.append(String.format("%-4s %-12s %-10s %-8s %-10s %-10s%n",
+        "ID", "CLIENT", "URG", "WEIGHT", "COST", "STATUS"));
+        sb.append("------------------------------------------------------------\n");
+
+        for(Order o: center.getProcessedOrders()){
+            sb.append(String.format("%-4d %-12s %-10s %-8.2f %-10.2f %-10s%n",
+                o.getId(),
+                o.getClient(),
+                o.getUrgency(),
+                o.getDeliverable().getWeight(),
+                o.getCost(),
+                o.getStatus()
+            ));
+        }
+        sb.append("------------------------------------------------------------\n\n");
+
+
+        sb.append("PENDING ORDERS\n");
+        sb.append("------------------------------------------------------------\n");
+        sb.append(String.format("%-4s %-12s %-10s %-8s %-10s %-35s%n",
+        "ID", "CLIENT", "URG", "WEIGHT", "STATUS", "REASON"));
+        sb.append("------------------------------------------------------------\n");
+
         for(Order o: center.getPendingOrders()){
-            sb.append(o).append("\n");
-            sb.append("Reason: ").append(center.getPendingReason(o)).append("\n");
+            sb.append(String.format("%-4d %-12s %-10s %-8.2f %-10s %-35s%n",
+                o.getId(),
+                o.getClient(),
+                o.getUrgency(),
+                o.getDeliverable().getWeight(),
+                o.getStatus(),
+                center.getPendingReason(o)
+            ));
         }
+        sb.append("------------------------------------------------------------\n");
+
         
         System.out.print(sb.toString());
         exportReport(sb.toString());
