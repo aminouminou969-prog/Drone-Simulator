@@ -1,5 +1,9 @@
+package map;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.DeliveryZone;
+import model.Position;
 
 public class Map {
     private List<DeliveryZone> deliveryZones = new ArrayList<>();

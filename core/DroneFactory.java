@@ -1,3 +1,10 @@
+package core;
+import model.Drone;
+import model.ExpressDrone;
+import model.HeavyDrone;
+import model.Position;
+import model.StandardDrone;
+
 public class DroneFactory {
     public static Drone createDrone(String type,Position position,double battery){
         switch (type.toUpperCase()) {

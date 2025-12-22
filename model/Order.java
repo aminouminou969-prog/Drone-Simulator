@@ -1,4 +1,7 @@
+package model;
 import java.util.Objects;
+
+import map.Deliverable;
 public class Order {
     private static int NEXT_ID = 1;
 

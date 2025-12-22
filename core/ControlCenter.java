@@ -1,6 +1,14 @@
+package core;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import model.Drone;
+import model.Order;
+import model.Position;
+
+import map.Map;
+
 import java.io.FileWriter;
 import java.io.IOException;
 public class ControlCenter {

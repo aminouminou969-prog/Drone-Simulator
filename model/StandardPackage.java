@@ -1,5 +1,8 @@
+package model;
 
 import java.util.Objects;
+
+import map.Deliverable;
 
 public class StandardPackage implements Deliverable {
     private double weight;

@@ -1,3 +1,4 @@
+package model;
 import java.util.Objects;
 public class DeliveryZone {
     private Position center;

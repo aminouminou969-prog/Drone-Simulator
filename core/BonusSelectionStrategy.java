@@ -1,4 +1,10 @@
+package core;
 import java.util.List;
+
+import map.Map;
+import model.Drone;
+import model.Order;
+import model.Position;
 
 public class BonusSelectionStrategy implements DroneSelectionStrategy {
     @Override

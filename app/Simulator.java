@@ -1,4 +1,11 @@
-import java.util.*;
+package app;
+import java.util.HashMap;
+import java.util.Map;
+
+import core.ControlCenter;
+import model.Drone;
+import model.Order;
+import model.Position;
 public class Simulator {
     private ControlCenter controlCenter;
 

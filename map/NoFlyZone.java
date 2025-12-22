@@ -1,3 +1,7 @@
+package map;
+import model.DeliveryZone;
+import model.Position;
+
 public class NoFlyZone extends DeliveryZone {
     public NoFlyZone(Position center, double radius){ super(center,radius); }
 

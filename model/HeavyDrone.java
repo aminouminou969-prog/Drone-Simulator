@@ -1,3 +1,5 @@
+package model;
+
 public class HeavyDrone extends Drone {
  public HeavyDrone(Position position, double battery) {
     super(position, battery, "HeavyDrone", 20.0, 3.0);
