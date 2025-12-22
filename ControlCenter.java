@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
 public class ControlCenter {
@@ -9,6 +11,8 @@ public class ControlCenter {
 
     private Position base;
     private Map map;
+
+    private DroneSelectionStrategy selectionStrategy;
 
     private final String eventsFile = "events.txt";
 
@@ -43,6 +47,12 @@ public class ControlCenter {
         this.map = map;
         this.pendingOrders=new ArrayList<>();
         this.processedOrders=new ArrayList<>();
+
+        this.selectionStrategy = new BonusSelectionStrategy();
+    }
+
+    public void setSelectionStrategy(DroneSelectionStrategy strategy){
+        this.selectionStrategy = strategy;
     }
 
     public void addDrone(Drone d) { fleet.add(d); }
@@ -122,7 +132,7 @@ public class ControlCenter {
     }
 
     public boolean assignOrder(Order order){
-        Drone d = selectDroneForOrder(order);
+        Drone d = selectionStrategy.selectDrone(order,fleet,map);
         if(d == null) return false;
         
         double newCost = calculateDeliveryCost(order, d);
