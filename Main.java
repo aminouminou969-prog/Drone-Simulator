@@ -16,9 +16,9 @@ public class Main {
         Position base = new Position(0, 0);
         ControlCenter center = new ControlCenter(base, map);
 
-        Drone d1 = new StandardDrone(new Position(0, 0), 100);
-        Drone d2 = new ExpressDrone(new Position(0, 0), 100);
-        Drone d3 = new HeavyDrone(new Position(0, 0), 100);
+        Drone d1 = DroneFactory.createDrone("STANDARD",new Position(0, 0), 100);
+        Drone d2 = DroneFactory.createDrone("EXPRESS",new Position(0, 0), 100);
+        Drone d3 = DroneFactory.createDrone("HEAVY",new Position(0, 0), 100);
 
         center.addDrone(d1);
         center.addDrone(d2);
