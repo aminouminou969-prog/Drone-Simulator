@@ -122,7 +122,7 @@ public class ControlCenter {
     }
 
     public boolean assignOrder(Order order){
-        Drone d = findDroneForOrder(order);
+        Drone d = selectDroneForOrder(order);
         if(d == null) return false;
         
         double newCost = calculateDeliveryCost(order, d);
