@@ -9,6 +9,24 @@ import model.Position;
 public class Simulator {
     private ControlCenter controlCenter;
 
+    private void printDebugheader(){
+        System.out.println("---------------------------------------------------------------");
+        System.out.printf("%-5s %-3s %-14s %-12s %-16s %-6s %-6s%n",
+        "MIN", "ID", "MODEL", "STATUS", "POSITION", "BAT%", "DIST");
+        System.out.println("---------------------------------------------------------------");
+    }
+
+    private void printDebugRow(int minute, Drone d){
+        System.out.printf("%-5d %-3d %-14s %-12s %-16s %-6.2f %-6.2f%n",
+            minute,
+            d.getId(),
+            d.getModel(),
+            d.getStatus(),
+            d.getPosition().toString(),
+            d.getBattery(),
+            d.getTotalDistance()
+        );
+    }
     public Simulator(ControlCenter controlCenter){ 
         this.controlCenter = controlCenter; 
     }
@@ -28,14 +46,15 @@ public class Simulator {
     private void moveDronesOneMinute(int minute){
         java.util.Map<Drone, Order> active = new HashMap<>(controlCenter.getActiveDeliveries());
 
+        if(DEBUG && minute == 1){
+            printDebugheader();
+        }
         if(DEBUG && minute <= 10){
-            System.out.println("BEFORE move");
+            
             for(Drone d: controlCenter.getFleet()){
-                System.out.println("Drone " + d.getId() + " " + d.getModel()
-                    + " status=" + d.getStatus()
-                    + " pos=" + d.getPosition()
-                    + " battery=" + String.format("%.2f", d.getBattery()));
+                printDebugRow(minute, d);
             }
+            System.out.println();
         }
 
         for(java.util.Map.Entry<Drone,Order> e : active.entrySet()){
@@ -85,14 +104,6 @@ public class Simulator {
                 }
             }
         }
-        if(DEBUG && minute <= 10){
-            System.out.println("AFTER move");
-            for(Drone d: controlCenter.getFleet()){
-                System.out.println("Drone " + d.getId() + " " + d.getModel()
-                    + " status=" + d.getStatus()
-                    + " pos=" + d.getPosition()
-                    + " battery=" + String.format("%.2f", d.getBattery()));
-            }
-        }
+
     }
 }
